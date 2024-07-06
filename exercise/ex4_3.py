@@ -7,6 +7,12 @@ def homework():
     iris = load_iris()
     scoreModel = None
     # YOUR CODE HERE
+    X = iris.data
+    y = iris.target
+    from sklearn.tree import DecisionTreeClassifier
+    dtmodel = DecisionTreeClassifier(random_state=0)
+    dtmodel.fit(X,y)
+    scoreModel = dtmodel.score(X,y)
 
     return scoreModel
 

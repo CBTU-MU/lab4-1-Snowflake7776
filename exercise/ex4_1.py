@@ -5,8 +5,18 @@ def homework():
 
     import pandas as pd
     data = pd.read_csv("https://raw.githubusercontent.com/toche7/DataSets/main/admit.csv")
-    scoreModelNN = None
+    
     # YOUR CODE HERE
+    y = data.Label
+    X = data[['SubjectA','SubjectB']]
+    from sklearn.neural_network import MLPClassifier
+    nn = MLPClassifier(solver='lbfgs', alpha=1e-5,
+                   hidden_layer_sizes=(10,10),   
+                   random_state= 10,
+                   max_iter = 1000)
+    nn.fit(X, y)
+    nn.predict(X)
+    scoreModelNN = nn.score(X,y) 
 
     return scoreModelNN
 
